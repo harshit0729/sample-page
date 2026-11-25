@@ -210,7 +210,7 @@ The interface is deliberately closer to a registry desk than a generic SaaS dash
 - Section numbering, hairline rules, ledger strips and figure labels give the page an editorial rhythm.
 - Motion is limited to a short rise on the hero, row-detail reveal and toast. Reduced-motion preferences are respected.
 - The “format only” boundary appears in the header, summary, row details, CSV and footer — not buried in a disclaimer.
-- Table below `lg`, cards on smaller screens; 50-row pagination keeps 500-row batches usable.
+- Table at `lg` and above, cards on smaller screens; 50-row pagination keeps 500-row batches usable.
 
 Typography: Instrument Serif for display, Manrope for UI, IBM Plex Mono for identifiers and technical labels.
 
