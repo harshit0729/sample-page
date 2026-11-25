@@ -10,7 +10,7 @@ Paste up to 500 identifiers. FileSure validates their **structure**, decodes eve
 
 ## Live demo
 
-Not published from this workspace yet. GitHub and Vercel both required owner authentication, which was not available during the build. See [Deployment](#deployment) for the exact commands.
+The source is published at [github.com/harshit0729/sample-page](https://github.com/harshit0729/sample-page). A live Vercel URL is not available yet: Vercel required owner authentication, and the anonymous temporary deployment it offers was blocked at Vercel's edge with a `403` (`X-Vercel-Mitigated: deny`), so no deployment URL is claimed. See [Deployment](#deployment) for the exact owner steps.
 
 The production build is verified locally:
 
@@ -235,16 +235,18 @@ vercel login
 vercel --prod
 ```
 
-The deployment must be authenticated to the account that should own it. This workspace was logged out of both Vercel and GitHub, so no deployment URL is claimed here.
+The deployment must be authenticated to the account that should own it. This workspace was logged out of Vercel, so no deployment URL is claimed here. The GitHub remote is pushed and verified; the Vercel project still needs to be created by the owner.
 
 ### GitHub
+
+The repository is pushed: `main` tracks `origin/main` at `https://github.com/harshit0729/sample-page.git`.
 
 ```bash
 gh auth login
 git push -u origin main
 ```
 
-The remote is configured as `https://github.com/harshit0729/sample-page.git`.
+Only run the push if you make further local changes; the initial history is already on the remote.
 
 ---
 

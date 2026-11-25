@@ -121,7 +121,7 @@ The first seven were fixed and re-checked. The eighth is a browser constraint, n
 
 ## 5. Claims the assistant did **not** make
 
-- No deployment URL was claimed. Vercel and GitHub CLI were both logged out; no deployment or push was performed. The README says so.
+- No live deployment URL was claimed. Vercel CLI was logged out; an anonymous temporary deployment was created, but Vercel's edge returned `403` (`X-Vercel-Mitigated: deny`) when it was opened, so it was not treated as a deployment. The GitHub push did succeed using an existing git credential even though `gh` was logged out, and the remote `main` commit was verified with `git ls-remote`.
 - No test count, build result or responsive result in this repository is estimated. Each was produced by running the command or inspecting the page.
 - No MCA record, company status or ownership claim is made anywhere in the app or docs.
 - No source is cited that was not actually consulted. Where a code is based on observed identifiers rather than a published list, it is labelled “observed”.
