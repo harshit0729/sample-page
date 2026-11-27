@@ -110,6 +110,7 @@ The first seven were fixed and re-checked. The eighth is a browser constraint, n
 - CSV: downloaded, opened, header and BOM checked, formula-injection escaping present.
 - Field guide: opens, focus moves to the close button, background scroll locks, Escape closes.
 - Pagination and filters at 50 rows per page.
+- **Live:** `https://harshit0729.github.io/sample-page/` loaded with its styles/fonts and returned nine decoded rows for the sample batch.
 
 **Not verified**
 
@@ -121,7 +122,7 @@ The first seven were fixed and re-checked. The eighth is a browser constraint, n
 
 ## 5. Claims the assistant did **not** make
 
-- No live deployment URL was claimed. Vercel CLI was logged out; an anonymous temporary deployment was created, but Vercel's edge returned `403` (`X-Vercel-Mitigated: deny`) when it was opened, so it was not treated as a deployment. The GitHub push did succeed using an existing git credential even though `gh` was logged out, and the remote `main` commit was verified with `git ls-remote`.
+- A live URL is now published via GitHub Pages at `https://harshit0729.github.io/sample-page/` and was opened in a browser to confirm the page, fonts and sample batch work. Vercel was not used for this deployment: its CLI was logged out, and the anonymous temporary deployment it offered returned `403` (`X-Vercel-Mitigated: deny`), so it was discarded. The GitHub push succeeded using an existing git credential even though `gh` was logged out, and the remote `main` commit was verified with `git ls-remote`.
 - No test count, build result or responsive result in this repository is estimated. Each was produced by running the command or inspecting the page.
 - No MCA record, company status or ownership claim is made anywhere in the app or docs.
 - No source is cited that was not actually consulted. Where a code is based on observed identifiers rather than a published list, it is labelled “observed”.

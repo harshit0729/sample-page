@@ -10,9 +10,13 @@ Paste up to 500 identifiers. FileSure validates their **structure**, decodes eve
 
 ## Live demo
 
-The source is published at [github.com/harshit0729/sample-page](https://github.com/harshit0729/sample-page). A live Vercel URL is not available yet: Vercel required owner authentication, and the anonymous temporary deployment it offers was blocked at Vercel's edge with a `403` (`X-Vercel-Mitigated: deny`), so no deployment URL is claimed. See [Deployment](#deployment) for the exact owner steps.
+**https://harshit0729.github.io/sample-page/**
 
-The production build is verified locally:
+Verified live: the page loads, styles and fonts resolve, and the nine-identifier sample batch returns nine decoded rows. The site is a static build published from the `gh-pages` branch, so it does not depend on a running dev server or a Vercel login.
+
+Source: [github.com/harshit0729/sample-page](https://github.com/harshit0729/sample-page).
+
+The production build is also verified locally:
 
 ```bash
 npm ci
@@ -218,16 +222,36 @@ Typography: Instrument Serif for display, Manrope for UI, IBM Plex Mono for iden
 
 ## Deployment
 
-The app is a static Vite site. No environment variables are needed.
+The app is a static Vite site. No environment variables are needed. `vite.config.js` uses a relative `base`, so the same build works at a domain root and under a project subpath.
 
-### Vercel dashboard
+### GitHub Pages (current live demo)
 
-1. Push the repository to GitHub.
-2. In Vercel, **Add New → Project** and import the repository.
-3. Framework preset: **Vite**. Build command: `npm run build`. Output directory: `dist`.
-4. Deploy.
+The built site lives on the `gh-pages` branch and is served from the repository root. No workflow or build step runs on GitHub; the contents of `dist/` are committed to that branch.
 
-### Vercel CLI
+To republish after a change:
+
+```bash
+npm run build
+git worktree add --detach ../sample-page-gh-pages
+git -C ../sample-page-gh-pages checkout --orphan gh-pages
+git -C ../sample-page-gh-pages rm -rf .
+cp -r dist/* ../sample-page-gh-pages/
+touch ../sample-page-gh-pages/.nojekyll
+git -C ../sample-page-gh-pages add -A
+git -C ../sample-page-gh-pages commit -m "build: publish static build"
+git -C ../sample-page-gh-pages push origin gh-pages
+git worktree remove ../sample-page-gh-pages
+```
+
+On Windows, use `Copy-Item -Recurse -Force dist\* <worktree>` instead of `cp`.
+
+### Vercel (optional)
+
+Not used for the current demo. Vercel requires owner authentication.
+
+**Dashboard:** **Add New → Project**, import the repository. Framework preset: **Vite**. Build command: `npm run build`. Output directory: `dist`. Deploy.
+
+**CLI:**
 
 ```bash
 npm install -g vercel
@@ -235,18 +259,15 @@ vercel login
 vercel --prod
 ```
 
-The deployment must be authenticated to the account that should own it. This workspace was logged out of Vercel, so no deployment URL is claimed here. The GitHub remote is pushed and verified; the Vercel project still needs to be created by the owner.
+The deployment must be authenticated to the account that should own it.
 
 ### GitHub
 
-The repository is pushed: `main` tracks `origin/main` at `https://github.com/harshit0729/sample-page.git`.
+`main` tracks `origin/main` at `https://github.com/harshit0729/sample-page.git`. The initial history is already pushed.
 
 ```bash
-gh auth login
 git push -u origin main
 ```
-
-Only run the push if you make further local changes; the initial history is already on the remote.
 
 ---
 
